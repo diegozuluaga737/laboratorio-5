@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QRectF>
+#include <QDesktopWidget>
+#include <QDebug>
+#include <QGraphicsScene>
+#include "personajes.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +22,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *scene;
+
+    float x,y;
+    Personajes *pac_man;
 };
 #endif // MAINWINDOW_H
