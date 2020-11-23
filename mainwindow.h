@@ -6,6 +6,7 @@
 #include <QDesktopWidget>
 #include <QDebug>
 #include <QGraphicsScene>
+#include <QKeyEvent>//recibir teclas
 #include "personajes.h"
 
 QT_BEGIN_NAMESPACE
@@ -26,5 +27,7 @@ private:
 
     float x,y;
     Personajes *pac_man;
+
+    void keyPressEvent(QKeyEvent *evento);
 };
 #endif // MAINWINDOW_H
