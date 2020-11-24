@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imagenes/concrete.png</file>
+        <file>imagenes/mapa guia.png</file>
+        <file>imagenes/mapa3.jpg</file>
+        <file>imagenes/muro_opt.jpg</file>
+        <file>imagenes/PACMAN_opt (1).png</file>
+    </qresource>
+</RCC>

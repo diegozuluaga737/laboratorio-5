@@ -8,19 +8,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     //escena
     scene = new QGraphicsScene(0,0,748,880);
-    scene->setBackgroundBrush(QPixmap(":/imagenes/mapa3.jpg"));
+    scene->setBackgroundBrush(QPixmap(":/imagenes/concrete.png"));
     ui->graphicsView->setScene(scene);
 
     //persona pacman
     pacman = new Personajes();
     scene->addItem(pacman);
     pacman->setPos(pacman->getPosx(),pacman->getPosy());
-   //fantasmas
-    redGhost = new Personajes(":/imagenes/red-Ghosts_opt.png",24,25,300,325);
-    scene->addItem(redGhost);
-    redGhost->setPos(redGhost->getPosx(),redGhost->getPosy());
-
-
 }
 
 MainWindow::~MainWindow()
