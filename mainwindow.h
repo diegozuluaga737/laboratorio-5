@@ -26,7 +26,8 @@ private:
     QGraphicsScene *scene;
 
     float x,y;
-    Personajes *pac_man;
+    Personajes *pacman;
+    Personajes *redGhost;
 
     void keyPressEvent(QKeyEvent *evento);
 };

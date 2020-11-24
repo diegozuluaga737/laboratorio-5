@@ -6,20 +6,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    QRect Desktop = QApplication::desktop()->screenGeometry();
-    x = Desktop.x();
-    y = Desktop.y();
-
     //escena
-    scene = scene = new QGraphicsScene(Desktop.x(),Desktop.y(),1024,688);
-    scene->setBackgroundBrush(QPixmap(":/imagenes/mapa pacman.png"));
+    scene = new QGraphicsScene(0,0,748,880);
+    scene->setBackgroundBrush(QPixmap(":/imagenes/mapa3.jpg"));
     ui->graphicsView->setScene(scene);
 
     //persona pacman
-    pac_man = new Personajes();
-    scene->addItem(pac_man);
-    pac_man->setPos(pac_man->getPosx(),pac_man->getPosy());
+    pacman = new Personajes();
+    scene->addItem(pacman);
+    pacman->setPos(pacman->getPosx(),pacman->getPosy());
+   //fantasmas
+    redGhost = new Personajes(":/imagenes/red-Ghosts_opt.png",24,25,300,325);
+    scene->addItem(redGhost);
+    redGhost->setPos(redGhost->getPosx(),redGhost->getPosy());
 
 
 }
@@ -31,17 +30,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *evento)
 {
-    if(evento->key() == Qt::Key_A){
-        pac_man->Left();
+    if(evento->key() == Qt::Key_A && pacman->x()>=20){
+        pacman->Left();
     }
-    else if(evento->key() == Qt::Key_D){
-        pac_man->Right();
+    else if(evento->key() == Qt::Key_D && pacman->x()<=730){
+        pacman->Right();
     }
-    else if(evento->key() == Qt::Key_W){
-        pac_man->Up();
+    else if(evento->key() == Qt::Key_W && pacman->y()>=20){
+        pacman->Up();
     }
-    else if(evento->key() == Qt::Key_S){
-        pac_man->Down();
+    else if(evento->key() == Qt::Key_S && pacman->y()<=860){
+        pacman->Down();
     }
 }
 

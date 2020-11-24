@@ -1,5 +1,48 @@
 #include "personajes.h"
 
+Personajes::Personajes(QObject *parent) : QObject(parent)
+{
+    timer = new QTimer();
+    filas = 0;
+    columnas = 0;
+    begin = 0;
+    suma = 37.5;
+    end = 150;
+    pixmap = new QPixmap(":/imagenes/PACMAN_opt (1).png");
+
+    posy = 325;
+    posx = 520;
+    velocidad =5;
+
+    //dimensiones de la imagen
+     ancho = 37.5;
+     alto = 38;
+     timer->start(120);
+     connect(timer,&QTimer::timeout,this,&Personajes::Actualizacion);
+
+}
+
+Personajes::Personajes(QString nombre, float ancho_, float alto_, int posx_, int posy_)
+{
+    timer = new QTimer();
+    filas = 0;
+    columnas = 0;
+    begin = 0;
+    suma = 24;
+    end = 48;
+
+    pixmap = new QPixmap(nombre);
+
+    posx = posx_;
+    posy = posy_;
+    velocidad = 5;
+
+    //dimensiones de la imagen
+    ancho = ancho_;
+    alto = alto_;
+    timer->start(300);
+    connect(timer,&QTimer::timeout,this,&Personajes::Actualizacion);
+}
 int Personajes::getPosx() const
 {
     return posx;
@@ -20,25 +63,6 @@ void Personajes::setPosy(int value)
     posy = value;
 }
 
-Personajes::Personajes(QObject *parent) : QObject(parent)
-{
-    timer = new QTimer();
-    filas = 0;
-    columnas = 0;
-    pixmap = new QPixmap(":/imagenes/PACMAN.png");
-
-    posy = 400;
-    posx = 400;
-    velocidad = 15;
-
-    //dimensiones de la imagen
-     ancho = 100;
-     alto = 100;
-     timer->start(120);
-     connect(timer,&QTimer::timeout,this,&Personajes::Actualizacion);
-
-}
-
 QRectF Personajes::boundingRect() const
 {
     return QRectF(-ancho/2,-alto/2,ancho,alto);
@@ -46,6 +70,8 @@ QRectF Personajes::boundingRect() const
 
 void Personajes::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    option = nullptr;
+    widget = nullptr;
     painter->drawPixmap(-ancho/2,-alto/2,*pixmap,columnas,0,ancho,alto);
 }
 
@@ -75,9 +101,9 @@ void Personajes::Right()
 
 void Personajes::Actualizacion()
 {
-    columnas += 100;
-    if(columnas >= 400){
-        columnas = 0;
+    columnas += suma;
+    if(columnas >= end){
+        columnas = begin;
     }
     this->update(-ancho/2,-alto/2,ancho,alto);
 }

@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QPixmap>
 #include <QPainter>
+#include <QString>
 
 class Personajes : public QObject, public QGraphicsItem
 {
@@ -13,10 +14,11 @@ class Personajes : public QObject, public QGraphicsItem
 
     int posx,posy;
     int velocidad;
-    float ancho, alto;
-    float filas, columnas;
+    float ancho,alto;
+    float filas,columnas,begin,suma,end;
 public:
     explicit Personajes(QObject *parent = nullptr);
+    Personajes(QString nombre,float ancho_,float alto_,int posx_,int posy_);
 
     QTimer *timer;
     QPixmap *pixmap;
