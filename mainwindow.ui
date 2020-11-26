@@ -30,6 +30,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGraphicsView" name="graphicsView">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -37,18 +40,6 @@
       <width>750</width>
       <height>882</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>750</width>
-      <height>882</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>750</width>
-      <height>882</height>
-     </size>
     </property>
    </widget>
   </widget>

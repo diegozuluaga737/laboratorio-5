@@ -10,8 +10,8 @@ Personajes::Personajes(QObject *parent) : QObject(parent)
     end = 150;
     pixmap = new QPixmap(":/imagenes/PACMAN_opt (1).png");
 
-    posy = 325;
-    posx = 520;
+    posy = 335;
+    posx = 510;
     velocidad =5;
 
     //dimensiones de la imagen
